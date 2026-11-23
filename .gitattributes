@@ -1,0 +1,10 @@
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.webp binary
+
+# 골든 응답·Maestro 흐름은 줄 단위 diff가 의미 있도록 텍스트로 유지
+*.yaml text
+*.json text
+*.html text

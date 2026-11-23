@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew:*)",
+      "Bash(scripts/verify.sh:*)",
+      "Bash(python3 scripts/check_test_control_flow.py:*)",
+      "Bash(python3 scripts/qa/new_run.py:*)",
+      "Bash(adb:*)",
+      "Bash(emulator:*)",
+      "Bash(xcrun simctl:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(maestro:*)",
+      "Bash(sips:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)"
+    ],
+    "ask": [
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ],
+    "deny": [
+      "Read(./local.properties)",
+      "Read(./**/local.properties)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/*.keystore)",
+      "Read(./**/*.jks)",
+      "Read(./**/*.p8)",
+      "Read(./**/*.mobileprovision)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/guard-backend-api.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/check-test-control-flow.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

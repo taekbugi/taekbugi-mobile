@@ -1,0 +1,44 @@
+# Gradle / Kotlin
+.gradle/
+build/
+.kotlin/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+.fleet/
+.vscode/
+
+# Android
+local.properties
+captures/
+*.apk
+*.aab
+*.keystore
+*.jks
+
+# iOS / Xcode
+xcuserdata/
+DerivedData/
+*.xcuserstate
+*.mobileprovision
+*.p8
+*.p12
+iosApp/Pods/
+
+# Secrets
+.env
+.env.*
+
+# QA 원본 산출물 (보고서 report.md 와 screenshots/ 는 커밋)
+docs/qa/reports/**/raw/
+.maestro/
+
+# Claude Code: 에이전트·규칙·스킬·훅은 팀 공용이라 커밋 (전역 gitignore의 .claude/ 무시를 되돌림)
+!.claude/
+.claude/settings.local.json
+.claude/worktrees/
+
+# macOS
+.DS_Store
